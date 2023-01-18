@@ -34,25 +34,6 @@ void pop(stack_t **stack, unsigned int line_num)
 	free(node);
 }
 
-void add(stack_t **stack, unsigned int line_num)
-{
-	int sum;
-
-	if (*stack && (*stack)->next)
-	{
-		sum = (*stack)->n + (*stack)->next->n;
-		pop(stack, line_num);
-		pop(stack, line_num);
-		push(stack, sum);
-	}
-	else
-	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-}
-
-
 void pall(stack_t **stack, unsigned int __attribute__ ((unused)) line_num)
 {
 	stack_t *node = *stack;
@@ -62,4 +43,19 @@ void pall(stack_t **stack, unsigned int __attribute__ ((unused)) line_num)
 
 	for (; node != NULL; node = node->next)
 		printf("%d\n", node->n);
+}
+
+
+void pint(stack_t **stack, unsigned int line_num)
+{
+	if (*stack == NULL)
+		pint_empty_stack(line_num);
+
+	printf("%d\n", (*stack)->n);
+}
+
+
+void nop(stack_t __attribute__ ((unused))**stack, unsigned int __attribute__ ((unused))line_num)
+{
+	;
 }

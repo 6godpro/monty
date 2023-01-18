@@ -37,6 +37,9 @@ instruct get_func(char *str)
 		{"pop", pop},
 		{"add", add},
 		{"pall", pall},
+		{"pint", pint},
+		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 
@@ -55,16 +58,17 @@ void parse_line(char **buff, unsigned int line_num, stack_t **stack)
 		s = get_func(buff[0]);
 		if (s == NULL)
 			invalid_op(*stack, buff, line_num);
-		if (strcmp(buff[0], "push") == 0 && !buff[1])
+		if (strcmp(buff[0], "push") == 0)
 		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_num);
-			free(buff);
-			free_dstack(*stack);
-			exit(EXIT_FAILURE);
-		}
-		if (strcmp(buff[0], "push") == 0 && buff[1] && is_digit(buff[1]))
-		{
-			globals.arg = atoi(buff[1]);
+			if (!buff[1] || (buff[1] && is_digit(buff[1]) == 0))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", line_num);
+				free(buff);
+				free_dstack(*stack);
+				exit(EXIT_FAILURE);
+			}
+			else
+				globals.arg = atoi(buff[1]);
 		}
 		s(stack, line_num);
 	}
