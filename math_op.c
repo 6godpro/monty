@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * add - Adds the top two elements of the stack.
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of
+ *	      instruction in the bytecode file
+ *	      that is being executed.
+ */
 void add(stack_t **stack, unsigned int line_num)
 {
 	int sum;
@@ -18,6 +25,14 @@ void add(stack_t **stack, unsigned int line_num)
 	}
 }
 
+/**
+ * sub - Subtracts the top element of the stack from
+ *	 the second top element of the stack.
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of instr-
+ *	      uction in the bytecode file that is
+ *	      being executed.
+ */
 void sub(stack_t **stack, unsigned int line_num)
 {
 	int diff;

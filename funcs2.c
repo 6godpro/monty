@@ -1,6 +1,11 @@
 #include "monty.h"
-
-int is_digit(char *str)
+/**
+ * is_number - Checks if a string is a number
+ * @str: The string to be checked.
+ * Return: If the string is a number - 1
+ *	   O/w - 0.
+ */
+int is_number(char *str)
 {
 	int i;
 

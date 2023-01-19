@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * push - Pushes an element to the stack.
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of
+ *	      instruction in the bytecode file
+ *	      that is being executed.
+ */
 void push(stack_t **stack, unsigned int line_num)
 {
 	stack_t *new;
@@ -16,6 +23,13 @@ void push(stack_t **stack, unsigned int line_num)
 	*stack = new;
 }
 
+/**
+ * pop - Removes the top element of the stack.
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of
+ *	      instruction in the bytecode file
+ *	      that is being executed.
+ */
 void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *node = *stack;
@@ -34,6 +48,14 @@ void pop(stack_t **stack, unsigned int line_num)
 	free(node);
 }
 
+/**
+ * pall - Prints all the values on the stack, starting
+ *	  from the top of the stack.
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of
+ *	      instruction in the bytecode file
+ *	      that is being executed.
+ */
 void pall(stack_t **stack, unsigned int __attribute__ ((unused)) line_num)
 {
 	stack_t *node = *stack;
@@ -45,7 +67,13 @@ void pall(stack_t **stack, unsigned int __attribute__ ((unused)) line_num)
 		printf("%d\n", node->n);
 }
 
-
+/**
+ * pint - Prints the value at the top of the stack.
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of
+ *	      instruction in the bytecode file
+ *	      that is being executed.
+ */
 void pint(stack_t **stack, unsigned int line_num)
 {
 	if (*stack == NULL)
@@ -54,8 +82,14 @@ void pint(stack_t **stack, unsigned int line_num)
 	printf("%d\n", (*stack)->n);
 }
 
-
-void nop(stack_t __attribute__ ((unused))**stack, unsigned int __attribute__ ((unused))line_num)
+/**
+ * nop - Opcode nop doesn’t do anything
+ * @stack: Pointer to the top of the stack/queue.
+ * @line_num: Corresponds to the line number of
+ *	      instruction in the bytecode file
+ *	      that is being executed.
+ */
+void nop(stack_t __attribute__((unused))**stack, unsigned int line_num)
 {
-	;
+	(void)line_num;
 }

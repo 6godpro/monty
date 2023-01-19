@@ -76,7 +76,7 @@ void invalid_op(stack_t *stack, char **buff, unsigned int line_num);
 
 /* utils */
 void free_dstack(stack_t *head);
-int is_digit(char *str);
+int is_number(char *str);
 int count_words(char *s, char *delim);
 char **line_tokens(char *line, char *delim);
 
