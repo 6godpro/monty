@@ -53,6 +53,9 @@ instruct get_func(char *opcode)
 		{"pint", pint},
 		{"nop", nop},
 		{"sub", sub},
+		{"div", _div},
+		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 

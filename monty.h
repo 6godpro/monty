@@ -40,7 +40,7 @@ typedef struct instruction_s
 /**
  * struct globals_s - Global variables used within program
  * @fp: The bytecode file.
- * @push_arg: Argument for push function.
+ * @arg: Argument for push function.
  * @str: ...
  */
 typedef struct globals_s
@@ -54,16 +54,18 @@ extern globals_t globals;
 /* Stack Function */
 void pop(stack_t **stack, unsigned int line_num);
 void add(stack_t **stack, unsigned int line_num);
+void nop(stack_t **stack, unsigned int line_num);
+void sub(stack_t **stack, unsigned int line_num);
+void mul(stack_t **stack, unsigned int line_num);
+void mod(stack_t **stack, unsigned int line_num);
+void _div(stack_t **stack, unsigned int line_num);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
-void nop(stack_t **stack, unsigned int line_num);
-void sub(stack_t **stack, unsigned int line_num);
 
 
 typedef void (*instruct)(stack_t **stack, unsigned int line_num);
 
-instruct get_func(char *str);
 instruct get_func(char *str);
 void parse_line(char **buff, unsigned int line_num, stack_t **stack);
 void open_file(char *file, stack_t **stack);
