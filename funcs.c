@@ -49,13 +49,16 @@ instruct get_func(char *opcode)
 		{"push", push},
 		{"pop", pop},
 		{"add", add},
-		{"pall", pall},
-		{"pint", pint},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
+		{"div", _div},
+		{"pall", pall},
+		{"pint", pint},
+		{"swap", swap},
+		{"pstr", pstr},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 
@@ -87,6 +90,7 @@ void parse_line(char **buff, unsigned int line_num, stack_t **stack)
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_num);
 				free(buff);
+
 				free_dstack(*stack);
 				exit(EXIT_FAILURE);
 			}
@@ -122,6 +126,12 @@ void open_file(char *file, stack_t **stack)
 		buff = line_tokens(line, " \n\t\r");
 		if (buff != NULL)
 		{
+			if (buff[0][0] == '#')
+			{
+				line_count++;
+				free(buff);
+				continue;
+			}
 			parse_line(buff, line_count, stack);
 		}
 		line_count++;

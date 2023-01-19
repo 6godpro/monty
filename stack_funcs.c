@@ -89,7 +89,8 @@ void pint(stack_t **stack, unsigned int line_num)
  *	      instruction in the bytecode file
  *	      that is being executed.
  */
-void nop(stack_t __attribute__((unused))**stack, unsigned int line_num)
+void nop(stack_t **stack, unsigned int line_num)
 {
+	(void)stack;
 	(void)line_num;
 }

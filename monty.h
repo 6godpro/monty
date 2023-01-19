@@ -62,6 +62,9 @@ void _div(stack_t **stack, unsigned int line_num);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
+void pstr(stack_t **stack, unsigned int line_num);
+void pchar(stack_t **stack, unsigned int line_num);
 
 
 typedef void (*instruct)(stack_t **stack, unsigned int line_num);
