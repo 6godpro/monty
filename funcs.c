@@ -18,8 +18,6 @@ char **line_tokens(char *line, char *delim)
 		return (NULL);
 
 	words = count_words(line, delim);
-	if (words > 2)
-		exit(-2);
 
 	buff = malloc(sizeof(char *) * (words + 1));
 	if (!buff)
@@ -134,6 +132,8 @@ void open_file(char *file, stack_t **stack)
 			}
 			parse_line(buff, line_count, stack);
 		}
+		else
+			printf("hello");
 		line_count++;
 		free(buff);
 	}
