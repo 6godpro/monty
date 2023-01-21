@@ -70,6 +70,7 @@ void pstr(stack_t **stack, unsigned int line_num)
 	if (*stack == NULL)
 	{
 		printf("\n");
+		return;
 	}
 
 	for (; tmp; tmp = tmp->next)
